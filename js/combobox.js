@@ -18,6 +18,11 @@ $(document).ready(function () {
     $(document).mouseup(hideComboboxData);
     // render ra combobox vào DOM
     createCombobox()
+    // thêm tính năng ấn esc ở bất cứ đâu đều ẩn toàn bộ combobox
+    $(document).on("keydown", document, hideComboboxOnESC)
+    // thêm tính năng ấn enter ở trong 1 danh sách thì sẽ nhập dữ liệu có
+    // trong item vào trong input và combobox
+    $(document).on("keydown", ".combobox .combobox__item", comboboxItemKeydown)
 })
 
 /**
@@ -124,7 +129,7 @@ function comboboxItemOnSelect() {
         $(input).val(text)
         $(comboboxData).removeClass(comboboxEnum.comboboxData.show);
         // gán value vào combobox
-        $(comboboxData).parents().attr("value", value)
+        $(comboboxData).parents(".combobox").first().attr("value", value)
 
     } catch (error) {
         console.log(error)
@@ -171,7 +176,7 @@ function createCombobox() {
 
                     for (const item of response) {
                         //tạo ra combobox__item từ response
-                        let html = `<div class="combobox__item" value="${item[propValue]}">${item[propText]}</div>`
+                        let html = `<div tabindex='0' class="combobox__item" value="${item[propValue]}">${item[propText]}</div>`
                         // append vào comboboxHTML
                         $(comboboxHTML).find(".combobox__data").append(html)
                     }
@@ -180,6 +185,73 @@ function createCombobox() {
                     $(combobox).replaceWith(comboboxHTML);
                 }
             });
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+/**
+ * khi ấn ESC thì sẽ thu gọn toàn bộ combobox
+ * Author: Tô Nguyễn Đức Mạnh (01/09/2022)
+ */
+
+function hideComboboxOnESC(e){
+    try {
+        if(e.keyCode == comboboxEnum.keycode.esc){
+            let comboboxDataList = $(".combobox .combobox__data")
+            // xóa class có chứa thuộc tính display:block đi là sẽ ẩn được
+            $(comboboxDataList).removeClass(comboboxEnum.comboboxData.show)
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+/**
+ * khi ấn các phím như lên, xuống, trái, phải, enter
+ * khi tab index đang ở 1 trong các combobox item thì sẽ
+ * trả về các kết quả tương ứng như di chuyển sang tabindex
+ * khác hoặc nhập dữ liệu vào trong input và value combobox
+ * Author: Tô Nguyễn Đức Mạnh (01/09/2022)
+ */
+
+function comboboxItemKeydown(e){
+    try {
+        let currentItem = e.target
+        let currentText = $(currentItem).text()
+        let currentVal = $(currentItem).attr("value")
+        let input = $(currentItem).parents(".combobox").first().children(".combobox__input").first()
+        let combobox = $(currentItem).parents(".combobox").first()
+        switch(e.keyCode){
+            // phím enter
+            case comboboxEnum.keycode.enter :
+                $(input).val(currentText)
+                $(combobox).attr("value", currentVal)
+                break
+            // phím lên
+            case comboboxEnum.keycode.up :
+                if($(this).prev())
+                $(this).prev().focus()
+                break
+            // phím xuống
+            case comboboxEnum.keycode.down :
+                if($(this).next())
+                $(this).next().focus()
+                break
+            // phím sang trái
+            case comboboxEnum.keycode.left :
+                if($(this).prev())
+                $(this).prev().focus()
+                break
+            // phím sang phải
+            case comboboxEnum.keycode.right :
+                if($(this).next())
+                $(this).next().focus()
+                break
+            default:
+                break
         }
     } catch (error) {
         console.log(error)

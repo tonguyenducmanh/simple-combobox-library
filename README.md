@@ -1,8 +1,9 @@
 
 ## Thư viện tạo combobox từ component đơn giản
-Code sẽ được viết trong cặp thẻ 
+Code sẽ được viết trong cặp thẻ mcombobox có dạng như sau
 ```html
-<mcombobox></mcombobox>
+<mcombobox id="idName" api="https://something." text="content" value="content2">
+</mcombobox>
 ```
 Trong đó :
 - id: tên id của combobox muốn đặt
@@ -21,3 +22,7 @@ Thêm cặp thẻ sau vào cuối trang html để chạy được thư viện
 <script type="module" src="./js/combobox.js"></script>
 ````
 ![Test combobox](./img/description.png)
+
+Ngoài ra có thể sử dụng phím ESC để ẩn combobox
+Phím Enter để nhập giá trị vào input và value vào combobox
+Các phím lên xuống trái phải để điều hướng khi ấn tab index
