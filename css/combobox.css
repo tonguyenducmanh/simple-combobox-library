@@ -1,0 +1,113 @@
+.combobox{
+    height: 40px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    position: relative;
+}
+
+.combobox .combobox__input{
+    border: 1px solid #E0E0E0;
+    width: 100%;
+    border-radius: 4px;
+    outline: none;
+    padding-left: 12px;
+    padding-right: 52px;
+    box-sizing: border-box;
+}
+
+
+.combobox .combobox__input:focus{
+    border: 1px solid #50B83C;
+}
+
+.combobox .combobox__input--alert{
+    border: 1px solid #EB3333;
+}
+
+.combobox .combobox__input--alert:focus{
+    border: 1px solid #EB3333;
+}
+
+.combobox .combobox__button{
+    cursor: pointer;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    height: 38px;
+    width: 39px;
+    border: none;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.combobox .combobox__drop{
+    position: relative;
+    width: 14px;
+    height: 14px;
+}
+
+.combobox .combobox__drop::before{
+    position: absolute;
+    content: "";
+    background-image: url(../img/chevron-down-solid.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 14px;
+    height: 14px;
+}
+
+.combobox .combobox__data{
+    display: none;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #E0E0E0;
+    box-shadow: 0px 1px 6px -2px rgb(165, 165, 165);
+    z-index: 1;
+    background-color: #ffffff;
+    max-height: 208px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.combobox .combobox__data--open{
+    display: block;
+}
+
+.combobox .combobox__item{
+    display: block;
+    height: 36px;
+    box-sizing: border-box;
+    padding: 8px;
+}
+
+.combobox .combobox__item--hide{
+    display: none;
+}
+
+.combobox .combobox__item:hover{
+    background-color: #E0E0E0;
+    cursor: pointer;
+}
+
+.combobox .combobox__item:active{
+    background-color: #c9c9c9;
+    cursor: pointer;
+}
+
+.combobox .combobox__item--selected{
+    background-color: #50B83C;
+    color: #ffffff;
+}
+
+.combobox .combobox__item--selected:hover{
+    background-color: #50B83C;
+}
+
+.combobox .combobox__item--selected:active{
+    background-color: #50B83C;
+}

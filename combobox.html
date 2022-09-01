@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/combobox.css">
+    <title>Combobox Demo</title>
+</head>
+
+<body>
+    <h1>Đây là page demo thư viện combobox</h1>
+    <br>
+    <mcombobox id="cbxDepartment" api="https://cukcuk.manhnv.net/api/v1/Departments" text="DepartmentName" value="DepartmentId">
+    </mcombobox>
+
+    <!-- combobox sau khi render sẽ như bên dưới -->
+    
+    <div id="cbxDepartment" class="combobox" value="">
+        <input class="combobox__input" type="text">
+        <button class="combobox__button">
+            <div class="combobox__drop">
+            </div>
+        </button>
+        <div class="combobox__data">
+            <div class="combobox__item" value="3f8e6896-4c7d-15f5-a018-75d8bd200d7c">Phòng Công Nghệ Thông Tin</div>
+            <div class="combobox__item" value="45ac3d26-18f2-18a9-3031-644313fbb055">Phòng Hành Chính</div>
+            <div class="combobox__item" value="78aafe4a-67a7-2076-3bf3-eb0223d0a4f7">Phòng Nhân Sự</div>
+            <div class="combobox__item" value="7c4f14d8-66fb-14ae-198f-6354f958f4c0">Phòng Kế Toán</div>
+        </div>
+    </div>
+    <!-- 
+    <div class="combobox" value="">
+        <input class="combobox__input" type="text">
+        <button class="combobox__button">
+            <div class="combobox__drop">
+            </div>
+        </button>
+        <div class="combobox__data">
+            <div class="combobox__item" value="0">Nam</div>
+            <div class="combobox__item combobox__item--selected" value="1">Nữ</div>
+            <div class="combobox__item" value="2">Gay</div>
+            <div class="combobox__item" value="3">Less</div>
+        </div>
+    </div> -->
+
+    <!-- script jquery -->
+    <script src="./js/jquery-3.6.1.min.js"></script>
+    <!-- script combobox -->
+    <script type="module" src="./js/combobox.js"></script>
+</body>
+
+</html>
