@@ -227,8 +227,11 @@ function comboboxItemKeydown(e){
         switch(e.keyCode){
             // phím enter
             case comboboxEnum.keycode.enter :
+                // lưu giá trị
                 $(input).val(currentText)
                 $(combobox).attr("value", currentVal)
+                // ẩn combobox data đi
+                $(combobox).children(".combobox__data").removeClass(comboboxEnum.comboboxData.show)
                 break
             // phím lên
             case comboboxEnum.keycode.up :
