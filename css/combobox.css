@@ -1,8 +1,3 @@
-/* muốn đổi màu viền tabindex dùng thuộc tính này */
-
-*:focus{
-    outline: 1px solid #50B83C;
-}
 .combobox{
     height: 40px;
     width: 100%;
