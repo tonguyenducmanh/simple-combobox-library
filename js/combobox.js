@@ -156,6 +156,8 @@ function createCombobox() {
             const propText = $(combobox).attr("text")
             // lấy ra prop value
             const propValue = $(combobox).attr("value")
+            // lấy ra placeholder
+            const placeholder = $(combobox).attr("placeholder")
 
             // lấy dữ liệu từ api
             $.ajax({
@@ -165,7 +167,7 @@ function createCombobox() {
                 success: function (response) {
                     let comboboxHTML = $(`
                     <div id=${id} class="combobox" value="">
-                        <input class="combobox__input" type="text">
+                        <input class="combobox__input" type="text" placeholder="${placeholder}">
                         <button class="combobox__button">
                             <div class="combobox__drop">
                             </div>

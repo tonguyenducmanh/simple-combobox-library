@@ -2,7 +2,8 @@
 ## Thư viện tạo combobox từ component đơn giản
 Code sẽ được viết trong cặp thẻ mcombobox có dạng như sau
 ```html
-<mcombobox id="idName" api="https://something." text="content" value="content2">
+<mcombobox id="idName" api="https://something." text="content" value="content2"
+placeholder="placeholder text">
 </mcombobox>
 ```
 Trong đó :
@@ -10,6 +11,7 @@ Trong đó :
 - api: địa chỉ api của trang web fetch data về
 - text : giá trị của trường muốn lấy trong json trả về để gán vào textContent item
 - value: giá trị của trường muốn lấy để gán vào value của item
+- placeholder: giá trị gợi ý khi chưa nhập vào input
 
 ````html
 Thêm cặp thẻ sau vào đầu trang html để hiện được css mặc định của combobox
