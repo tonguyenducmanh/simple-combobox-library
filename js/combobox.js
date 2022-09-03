@@ -32,7 +32,6 @@ $(document).ready(function () {
 
 function inputComboboxOnClick(){
     try {
-        console.log("hihi")
          // kiểm tra xem có cái combobox nào đang mở không, nếu có ẩn hết nó đi
          let comboboxDatas = $(".combobox")
          comboboxDatas.children(".combobox__data").removeClass(comboboxEnum.comboboxData.show);
@@ -139,7 +138,7 @@ function comboboxItemOnSelect() {
 /**
  * tạo combobox thay thế element có tên là <mcombobox></mcombobox>
  * trong DOM
- * Author: Tô Nguyễn Đức Mạnh (01/09/2022)
+ * Author: Tô Nguyễn Đức Mạnh (03/09/2022)
  */
 
 function createCombobox() {
@@ -158,35 +157,69 @@ function createCombobox() {
             const propValue = $(combobox).attr("value")
             // lấy ra placeholder
             const placeholder = $(combobox).attr("placeholder")
-
+            // lấy ra data có sẵn phòng trường hợp k có api
+            const data = $(combobox).attr("data")
+            // lấy ra defaulValue
+            const defaultVal = $(combobox).attr("defaultValue")
             // lấy dữ liệu từ api
-            $.ajax({
-                type: "GET",
-                url: api,
-                async: false,
-                success: function (response) {
-                    let comboboxHTML = $(`
-                    <div id=${id} class="combobox" value="">
-                        <input class="combobox__input" type="text" placeholder="${placeholder}">
-                        <button class="combobox__button">
-                            <div class="combobox__drop">
+            if(api !== undefined){
+                $.ajax({
+                    type: "GET",
+                    url: api,
+                    async: false,
+                    success: function (response) {
+                        let comboboxHTML = $(`
+                        <div id=${id} class="combobox" value="">
+                            <input class="combobox__input" type="text" placeholder="${placeholder}">
+                            <button class="combobox__button">
+                                <div class="combobox__drop">
+                                </div>
+                            </button>
+                            <div class="combobox__data">
                             </div>
-                        </button>
-                        <div class="combobox__data">
-                        </div>
-                    </div> `)
-
-                    for (const item of response) {
-                        //tạo ra combobox__item từ response
-                        let html = `<div tabindex='0' class="combobox__item" value="${item[propValue]}">${item[propText]}</div>`
-                        // append vào comboboxHTML
-                        $(comboboxHTML).find(".combobox__data").append(html)
+                        </div> `)
+    
+                        for (const item of response) {
+                            //tạo ra combobox__item từ response
+                            let html = `<div tabindex='0' class="combobox__item" value="${item[propValue]}">${item[propText]}</div>`
+                            // append vào comboboxHTML
+                            $(comboboxHTML).find(".combobox__data").append(html)
+                        }
+                        // thay thế mcombobox trong DOM bằng comboboxHTML
+                        $(comboboxHTML).data("data", response)
+                        $(combobox).replaceWith(comboboxHTML);
                     }
-                    // thay thế mcombobox trong DOM bằng comboboxHTML
-                    $(comboboxHTML).data("data", response)
-                    $(combobox).replaceWith(comboboxHTML);
+                });
+            }else{
+            // render dữ liệu từ đầu vào nếu không có api
+            let comboboxHTML = $(`
+            <div id=${id} class="combobox" value="">
+                <input class="combobox__input" type="text" placeholder="${placeholder}" value="${defaultVal !== undefined ? defaultVal : ""}">
+                <button class="combobox__button">
+                    <div class="combobox__drop">
+                    </div>
+                </button>
+                <div class="combobox__data">
+                </div>
+            </div> `)
+            // phân chia các item bằng dấu ;
+            let items = data.split(";")
+            for(const item of items){
+                // phân chia giá trị và text bằng dấu :
+                let arrItem = item.split(":")
+                // kiểm tra xem có phải giá trị mặc định không
+                let html =""
+                if(defaultVal.trim() === arrItem[0].trim()){
+                   html  = `<div tabindex='0' class="combobox__item ${comboboxEnum.comboboxItem.selected}" value="${arrItem[1].trim()}">${arrItem[0].trim()}</div>`
+                }else{
+                   html = `<div tabindex='0' class="combobox__item" value="${arrItem[1].trim()}">${arrItem[0].trim()}</div>`
                 }
-            });
+                // append vào comboboxHTML
+                $(comboboxHTML).find(".combobox__data").append(html)
+            }
+            // thay thế mcombobox trong DOM bằng comboboxHTML
+            $(combobox).replaceWith(comboboxHTML);
+            }
         }
     } catch (error) {
         console.log(error)

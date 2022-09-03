@@ -3,7 +3,8 @@ let comboboxEnum = {
         show: "combobox__data--open"
     },
     comboboxItem:{
-        hide: "combobox__item--hide"
+        hide: "combobox__item--hide",
+        selected: "combobox__item--selected",
     },
     keycode:{
         left: 37,
