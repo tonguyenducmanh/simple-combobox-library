@@ -161,6 +161,8 @@ function createCombobox() {
             const data = $(combobox).attr("data")
             // lấy ra defaulValue
             const defaultVal = $(combobox).attr("defaultValue")
+            // lấy ra defaultValueShort
+            const unique = $(combobox).attr("unique")
             // lấy dữ liệu từ api
             if(api !== undefined){
                 $.ajax({
@@ -193,7 +195,7 @@ function createCombobox() {
             }else{
             // render dữ liệu từ đầu vào nếu không có api
             let comboboxHTML = $(`
-            <div id=${id} class="combobox" value="">
+            <div id=${id} class="combobox" value="${unique}">
                 <input class="combobox__input" type="text" placeholder="${placeholder}" value="${defaultVal !== undefined ? defaultVal : ""}">
                 <button class="combobox__button">
                     <div class="combobox__drop">

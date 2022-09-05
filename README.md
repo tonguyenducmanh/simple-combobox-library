@@ -8,7 +8,7 @@ placeholder="placeholder text">
 </mcombobox>
 không có api
 <mcombobox id="idName" data="Text1: value1;Text2: value2;Text3:valu3" 
-placeholder="placeholder text" defaultValue="Text1">
+placeholder="placeholder text" defaultValue="Text1" unique="value1">
 </mcombobox>
 ```
 Trong đó :
@@ -16,6 +16,8 @@ Trong đó :
 - api: địa chỉ api của trang web fetch data về
 - text : giá trị của trường muốn lấy trong json trả về để gán vào textContent item
 - value: giá trị của trường muốn lấy để gán vào value của item
+- unique: giá trị mặc định được set bên phải value
+( ví dụ ta có : 50 sản phẩm : 50 => value là 50 sản phẩm, unique là 50)
 - placeholder: giá trị gợi ý khi chưa nhập vào input
 - data: giá trị thay cho api, viết dạng Text1: value1;Text2: value2;Text3:valu3
 - defaultValue: chỉ dùng khi có data, giá trị được chọn mặc định
