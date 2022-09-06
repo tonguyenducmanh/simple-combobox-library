@@ -4,7 +4,7 @@ Code sẽ được viết trong cặp thẻ mcombobox có dạng như sau
 ```html
 có api
 <mcombobox id="idName" api="https://something." text="content" value="content2"
-placeholder="placeholder text">
+placeholder="placeholder text" propName="something">
 </mcombobox>
 không có api
 <mcombobox id="idName" data="Text1: value1;Text2: value2;Text3:valu3" 
@@ -21,6 +21,7 @@ Trong đó :
 - placeholder: giá trị gợi ý khi chưa nhập vào input
 - data: giá trị thay cho api, viết dạng Text1: value1;Text2: value2;Text3:valu3
 - defaultValue: chỉ dùng khi có data, giá trị được chọn mặc định
+- propName: tên riêng đặt cho combobox này
 
 
 ````html

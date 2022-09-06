@@ -157,6 +157,8 @@ function createCombobox() {
             const propValue = $(combobox).attr("value")
             // lấy ra placeholder
             const placeholder = $(combobox).attr("placeholder")
+            // lấy ra propName
+            const propName = $(combobox).attr("propName")
             // lấy ra data có sẵn phòng trường hợp k có api
             const data = $(combobox).attr("data")
             // lấy ra defaulValue
@@ -171,7 +173,7 @@ function createCombobox() {
                     async: false,
                     success: function (response) {
                         let comboboxHTML = $(`
-                        <div id=${id} class="combobox" value="">
+                        <div id=${id} propName=${propName} class="combobox" value="">
                             <input class="combobox__input" type="text" placeholder="${placeholder}">
                             <button class="combobox__button">
                                 <div class="combobox__drop">
