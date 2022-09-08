@@ -178,7 +178,6 @@ function createCombobox() {
                     success: function (response) {
                         let comboboxHTML = $(`
                         <div id="${id}" propName="${propName}" class="combobox" value=""
-                            data-title="${dataTitle}"
                         >
                             <input class="combobox__input ${clasName}" type="text" placeholder="${placeholder}">
                             <button class="combobox__button">
@@ -188,7 +187,9 @@ function createCombobox() {
                             <div class="combobox__data">
                             </div>
                         </div> `)
-    
+                        if(dataTitle != undefined){
+                            $(comboboxHTML).attr("data-title", dataTitle)
+                        }
                         for (const item of response) {
                             //tạo ra combobox__item từ response
                             let html = `<div tabindex='0' class="combobox__item" value="${item[propValue]}">${item[propText]}</div>`
@@ -204,7 +205,6 @@ function createCombobox() {
             // render dữ liệu từ đầu vào nếu không có api
             let comboboxHTML = $(`
             <div id="${id}" class="combobox" value="${unique}"
-                data-title="${dataTitle}"
             >
                 <input class="combobox__input ${clasName}" type="text" placeholder="${placeholder}" value="${defaultVal !== undefined ? defaultVal : ""}">
                 <button class="combobox__button">
@@ -214,6 +214,9 @@ function createCombobox() {
                 <div class="combobox__data">
                 </div>
             </div> `)
+            if(dataTitle != undefined){
+                $(comboboxHTML).attr("data-title", dataTitle)
+            }
             // phân chia các item bằng dấu ;
             let items = data.split(";")
             for(const item of items){
