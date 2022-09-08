@@ -3,16 +3,18 @@
 Code sẽ được viết trong cặp thẻ mcombobox có dạng như sau
 ```html
 có api
-<mcombobox id="idName" api="https://something." text="content" value="content2"
+<mcombobox id="idName" api="https://something." text="content" value="content2" class="inputclass" data-title="title của input khi hover"
 placeholder="placeholder text" propName="something">
 </mcombobox>
 không có api
-<mcombobox id="idName" data="Text1: value1;Text2: value2;Text3:valu3" 
+<mcombobox id="idName" data="Text1: value1;Text2: value2;Text3:valu3"  class="inputclass" data-title="title của input khi hover"
 placeholder="placeholder text" defaultValue="Text1" unique="value1">
 </mcombobox>
 ```
 Trong đó :
 - id: tên id của combobox muốn đặt
+- class: tên class của input muốn đặt
+- data-title: dùng như tooltip, hover vào sẽ hiện lên
 - api: địa chỉ api của trang web fetch data về
 - text : giá trị của trường muốn lấy trong json trả về để gán vào textContent item
 - value: giá trị của trường muốn lấy để gán vào value của item

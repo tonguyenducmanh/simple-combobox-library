@@ -149,6 +149,10 @@ function createCombobox() {
         for (const combobox of comboboxs) {
             // lấy id
             const id = $(combobox).attr("id")
+            // lấy class
+            const clasName = $(combobox).attr("class")
+            // lấy data-title
+            const dataTitle = $(combobox).attr("data-title")
             // lấy api
             const api = $(combobox).attr("api")
             // lấy ra prop text 
@@ -173,8 +177,10 @@ function createCombobox() {
                     async: false,
                     success: function (response) {
                         let comboboxHTML = $(`
-                        <div id=${id} propName=${propName} class="combobox" value="">
-                            <input class="combobox__input" type="text" placeholder="${placeholder}">
+                        <div id="${id}" propName="${propName}" class="combobox" value=""
+                            data-title="${dataTitle}"
+                        >
+                            <input class="combobox__input ${clasName}" type="text" placeholder="${placeholder}">
                             <button class="combobox__button">
                                 <div class="combobox__drop">
                                 </div>
@@ -197,8 +203,10 @@ function createCombobox() {
             }else{
             // render dữ liệu từ đầu vào nếu không có api
             let comboboxHTML = $(`
-            <div id=${id} class="combobox" value="${unique}">
-                <input class="combobox__input" type="text" placeholder="${placeholder}" value="${defaultVal !== undefined ? defaultVal : ""}">
+            <div id="${id}" class="combobox" value="${unique}"
+                data-title="${dataTitle}"
+            >
+                <input class="combobox__input ${clasName}" type="text" placeholder="${placeholder}" value="${defaultVal !== undefined ? defaultVal : ""}">
                 <button class="combobox__button">
                     <div class="combobox__drop">
                     </div>

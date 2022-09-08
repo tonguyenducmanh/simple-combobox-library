@@ -4,13 +4,12 @@
     box-sizing: border-box;
     display: flex;
     position: relative;
+    outline: none;
 }
 
 .combobox .combobox__input{
-    border: 1px solid #E0E0E0;
     width: 100%;
     border-radius: 4px;
-    outline: none;
     padding-left: 12px;
     padding-right: 52px;
     box-sizing: border-box;
