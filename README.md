@@ -21,7 +21,7 @@ Trong đó :
 - placeholder: giá trị gợi ý khi chưa nhập vào input
 - data: giá trị thay cho api, viết dạng Text1: value1;Text2: value2;Text3:valu3
 - defaultValue: chỉ dùng khi có data, giá trị được chọn mặc định
-- propName: tên riêng đặt cho combobox này
+- propName: tên riêng đặt cho combobox này \
 Options:
 - class: tên class của input muốn đặt
 - data-title: dùng như tooltip, hover vào sẽ hiện lên
