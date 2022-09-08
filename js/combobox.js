@@ -153,6 +153,8 @@ function createCombobox() {
             const clasName = $(combobox).attr("class")
             // lấy data-title
             const dataTitle = $(combobox).attr("data-title")
+            // lấy validate
+            const validate = $(combobox).attr("validate")
             // lấy api
             const api = $(combobox).attr("api")
             // lấy ra prop text 
@@ -190,6 +192,9 @@ function createCombobox() {
                         if(dataTitle != undefined){
                             $(comboboxHTML).attr("data-title", dataTitle)
                         }
+                        if(validate != undefined){
+                            $(comboboxHTML).children(".combobox__input").attr("validate", validate)
+                        }
                         for (const item of response) {
                             //tạo ra combobox__item từ response
                             let html = `<div tabindex='0' class="combobox__item" value="${item[propValue]}">${item[propText]}</div>`
@@ -216,6 +221,9 @@ function createCombobox() {
             </div> `)
             if(dataTitle != undefined){
                 $(comboboxHTML).attr("data-title", dataTitle)
+            }
+            if(validate != undefined){
+                $(comboboxHTML).children(".combobox__input").attr("validate", validate)
             }
             // phân chia các item bằng dấu ;
             let items = data.split(";")
